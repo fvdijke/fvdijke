@@ -1,0 +1,503 @@
+type: picture-elements
+image: /local/-------PLANV20.png
+elements:
+  - type: state-label
+    entity: sensor.ikea_of_sweden_vindstyrka_particulate_matter
+    style:
+      top: 5%
+      left: 22%
+  - type: state-label
+    entity: sensor.air_quality_sensor_volatile_organic_compound_level
+    style:
+      top: 5%
+      left: 38%
+  - type: state-label
+    entity: sensor.air_quality_sensor_carbon_dioxide_co2_level
+    style:
+      top: 6%
+      left: 38%
+  - type: state-icon
+    entity: light.tz3000_49qchf10_ts0502a_24741efe_level_light_color_on_off
+    style:
+      top: 42%
+      left: 89%
+    tap_action:
+      action: toggle
+  - type: state-icon
+    entity: light.televisie_rechts_level_light_color_on_off
+    style:
+      top: 44%
+      left: 59%
+    tap_action:
+      action: toggle
+  - type: state-label
+    entity: sensor.tv_en_modem_electricalmeasurement
+    style:
+      top: 43%
+      left: 79%
+  - type: state-label
+    entity: sensor.schakelaar_macbook_power
+    style:
+      top: 7%
+      left: 87%
+  - type: state-label
+    entity: sensor.temperatuur_tv_kast_temperature
+    style:
+      top: 43%
+      left: 83%
+  - type: state-icon
+    entity: light.zitbank_links_level_light_color_on_off
+    style:
+      top: 8%
+      left: 83%
+    tap_action:
+      action: toggle
+  - type: state-icon
+    entity: light.zitbank_rechts_level_light_color_on_off
+    style:
+      top: 5%
+      left: 66%
+    tap_action:
+      action: toggle
+  - type: state-icon
+    entity: light.ecodim_bv_ecodim_zigbee_3_0_6d991ffe_level_on_off
+    style:
+      top: 26%
+      left: 72%
+    tap_action:
+      action: toggle
+  - type: state-icon
+    entity: light.ecodim_bv_ecodim_zigbee_3_0_level_on_off
+    style:
+      top: 24%
+      left: 44%
+    tap_action:
+      action: toggle
+  - type: state-icon
+    entity: light.ecodim_bv_ecodim_zigbee_3_0_0fb11ffe_level_on_off
+    style:
+      top: 35%
+      left: 41%
+    tap_action:
+      action: toggle
+  - type: state-icon
+    entity: switch.servieskast_on_off
+    style:
+      top: 4%
+      left: 55%
+  - type: state-icon
+    entity: binary_sensor.aqara_contact_woonkamer
+    style:
+      top: 11%
+      left: 95%
+  - type: state-icon
+    entity: binary_sensor.aqara_contact_woonkamerbalkon
+    style:
+      top: 39%
+      left: 95%
+  - type: state-icon
+    entity: binary_sensor.lumi_lumi_sensor_motion_aq2_509e8e07_occupancy
+    style:
+      top: 45%
+      left: 45%
+  - type: state-label
+    entity: sensor.woonkamer_temperature
+    style:
+      top: 30%
+      left: 70%
+      filter: invert(100%)
+  - type: state-label
+    entity: sensor.woonkamer_humidity
+    style:
+      top: 32%
+      left: 70%
+      filter: invert(100%)
+  - type: state-label
+    entity: sensor.lumi_lumi_sensor_motion_aq2_509e8e07_illuminance
+    style:
+      top: 30%
+      left: 74%
+      filter: invert(100%)
+  - type: state-label
+    entity: sensor.xiaomi_lumi_sen_ill_mgl01_illuminance
+    style:
+      top: 22%
+      left: 95%
+      filter: invert(100%)
+  - type: state-label
+    entity: sensor.buienradar_temperature
+    style:
+      top: 24%
+      left: 95%
+      filter: invert(100%)
+  - type: state-label
+    entity: sensor.buienradar_humidity
+    style:
+      top: 26%
+      left: 95%
+      filter: invert(100%)
+  - type: state-icon
+    entity: binary_sensor.lumi_lumi_sensor_motion_aq2_36cdf606_occupancy
+    style:
+      top: 9%
+      left: 32%
+  - type: state-label
+    entity: sensor.woonkamer_temperature
+    style:
+      top: 15%
+      left: 20%
+  - type: state-label
+    entity: sensor.ikea_of_sweden_vindstyrka_humidity
+    style:
+      top: 17%
+      left: 20%
+  - type: state-label
+    entity: sensor.lumi_lumi_sensor_motion_aq2_36cdf606_illuminance
+    style:
+      top: 15%
+      left: 24%
+  - type: state-icon
+    entity: switch.werkbladverlichting_on_off
+    style:
+      top: 4%
+      left: 15%
+    tap_action:
+      action: toggle
+  - type: state-icon
+    entity: switch.keukenverlichting_on_off
+    style:
+      top: 17%
+      left: 22%
+    tap_action:
+      action: toggle
+  - type: state-icon
+    entity: switch.afzuigkap_on_off
+    style:
+      top: 3%
+      left: 22%
+    tap_action:
+      action: toggle
+  - type: state-icon
+    entity: binary_sensor.aqara_contact_keukenraam
+    style:
+      top: 10%
+      left: 5%
+  - type: state-icon
+    entity: binary_sensor.aqara_contact_keukenraamboven
+    style:
+      top: 16%
+      left: 5%
+  - type: state-label
+    entity: sensor.koelkast_electricalmeasurement
+    style:
+      top: 6%
+      left: 30%
+  - type: state-label
+    entity: sensor.oven_electricalmeasurement
+    style:
+      top: 11%
+      left: 22%
+  - type: state-label
+    entity: sensor.vaatwasser_electricalmeasurement
+    style:
+      top: 18%
+      left: 9%
+  - type: state-label
+    entity: sensor.lattego_electricalmeasurement
+    style:
+      top: 6%
+      left: 26%
+  - type: state-label
+    entity: sensor.cv_pomp_en_ketel_electricalmeasurement
+    style:
+      top: 4%
+      left: 38%
+  - type: state-label
+    entity: sensor.gang_beneden_temperature
+    style:
+      top: 28%
+      left: 21%
+  - type: state-label
+    entity: sensor.gang_beneden_humidity
+    style:
+      top: 30%
+      left: 21%
+  - type: state-label
+    entity: sensor.lumi_lumi_sensor_motion_aq2_55fc0407_illuminance
+    style:
+      top: 28%
+      left: 25%
+  - type: state-icon
+    entity: binary_sensor.lumi_lumi_sensor_motion_aq2_55fc0407_occupancy
+    style:
+      top: 25%
+      left: 27%
+  - type: state-icon
+    entity: binary_sensor.aqara_contact_voordeur
+    style:
+      top: 30%
+      left: 13%
+  - type: state-label
+    entity: sensor.temperatuur_galerij_temperature
+    style:
+      top: 29%
+      left: 3%
+  - type: state-label
+    entity: sensor.temperatuur_galerij_humidity
+    style:
+      top: 31%
+      left: 3%
+  - type: state-icon
+    entity: binary_sensor.lumi_lumi_motion_ac02_iaszone
+    style:
+      top: 26%
+      left: 6%
+  - type: state-label
+    entity: sensor.wc_temperature
+    style:
+      top: 44%
+      left: 11%
+  - type: state-label
+    entity: sensor.wc_humidity
+    style:
+      top: 46%
+      left: 11%
+  - type: state-label
+    entity: sensor.lumi_lumi_sensor_motion_aq2_902d0007_illuminance
+    style:
+      top: 44%
+      left: 14%
+  - type: state-icon
+    entity: binary_sensor.lumi_lumi_sensor_motion_aq2_902d0007_occupancy
+    style:
+      top: 46%
+      left: 8%
+  - type: state-icon
+    entity: light.lumi_lumi_switch_l0agl1_on_off
+    style:
+      top: 44%
+      left: 18%
+    tap_action:
+      action: toggle
+  - type: state-label
+    entity: sensor.p1_meter_5c2faf00128e_active_power
+    style:
+      top: 44%
+      left: 39%
+      filter: invert(100%)
+  - type: state-icon
+    entity: light.overlooplamp_level_light_color_on_off
+    style:
+      top: 91%
+      left: 54%
+    tap_action:
+      action: toggle
+  - type: state-icon
+    entity: binary_sensor.overloop_z_home_security_motion_detection
+    style:
+      top: 94%
+      left: 54%
+  - type: state-label
+    entity: sensor.overloop_z_air_temperature
+    style:
+      top: 83%
+      left: 50%
+      filter: invert(100%)
+  - type: state-label
+    entity: sensor.lumi_lumi_sensor_motion_aq2_illuminance_2
+    style:
+      top: 83%
+      left: 54%
+      filter: invert(100%)
+  - type: state-icon
+    entity: binary_sensor.lumi_lumi_sensor_motion_aq2_iaszone
+    style:
+      top: 80%
+      left: 65%
+  - type: state-label
+    entity: sensor.overloop_z_humidity
+    style:
+      top: 85%
+      left: 50%
+      filter: invert(100%)
+  - type: state-icon
+    entity: light.ecodim_bv_ecodim_zigbee_3_0_143825fe_level_on_off
+    style:
+      top: 79%
+      left: 23%
+    tap_action:
+      action: toggle
+  - type: state-icon
+    entity: binary_sensor.aqara_contact_slaapkamerdeur
+    style:
+      top: 59%
+      left: 5%
+  - type: state-icon
+    entity: binary_sensor.contact_sensor
+    style:
+      top: 83%
+      left: 5%
+  - type: state-label
+    entity: sensor.slaapkamer_temperature
+    style:
+      top: 80%
+      left: 22%
+      filter: invert(100%)
+  - type: state-label
+    entity: sensor.slaapkamer_humidity
+    style:
+      top: 82%
+      left: 22%
+      filter: invert(100%)
+  - type: state-label
+    entity: sensor.ikea_of_sweden_vindstyrka_particulate_matter_2
+    style:
+      top: 65%
+      left: 23%
+      filter: invert(100%)
+  - type: state-label
+    entity: sensor.lumi_lumi_sensor_motion_aq2_10b08e07_illuminance
+    style:
+      top: 80%
+      left: 26%
+      filter: invert(100%)
+  - type: state-icon
+    entity: binary_sensor.pir_slaapkamer_2_bezetting
+    style:
+      top: 53%
+      left: 5%
+  - type: state-icon
+    entity: binary_sensor.lumi_lumi_sensor_motion_aq2_10b08e07_occupancy
+    style:
+      top: 53%
+      left: 30%
+  - type: state-label
+    entity: sensor.tz3000_gjnozsaz_ts011f_active_power_3
+    style:
+      top: 54%
+      left: 20%
+  - type: state-label
+    entity: sensor.tz3000_gjnozsaz_ts011f_active_power_2
+    style:
+      top: 93%
+      left: 60%
+  - type: state-label
+    entity: sensor.tz3000_gjnozsaz_ts011f_active_power
+    style:
+      top: 95%
+      left: 60%
+  - type: state-icon
+    entity: light.licht_kantoor_georgette_level_light_color_on_off
+    style:
+      top: 86%
+      left: 75%
+      filter: invert(100%)
+    tap_action:
+      action: toggle
+  - type: state-label
+    entity: sensor.kantoor_georgette_temperature
+    style:
+      top: 84%
+      left: 74%
+      filter: invert(100%)
+  - type: state-label
+    entity: sensor.kantoor_georgette_humidity
+    style:
+      top: 86%
+      left: 74%
+      filter: invert(100%)
+  - type: state-label
+    entity: sensor.lumi_lumi_sensor_motion_aq2_449d8e07_illuminance
+    style:
+      top: 84%
+      left: 78%
+      filter: invert(100%)
+  - type: state-icon
+    entity: binary_sensor.lumi_lumi_sensor_motion_aq2_449d8e07_occupancy
+    style:
+      top: 96%
+      left: 70%
+  - type: state-icon
+    entity: binary_sensor.lumi_lumi_sensor_motion_aq2_occupancy
+    style:
+      top: 74%
+      left: 62%
+  - type: state-icon
+    entity: switch.studioverlichting_on_off
+    style:
+      top: 66%
+      left: 73%
+    tap_action:
+      action: toggle
+  - type: state-icon
+    entity: switch.krk_links_on_off
+    tap_action:
+      action: toggle
+    style:
+      top: 74%
+      left: 84%
+  - type: state-icon
+    entity: switch.krk_rechts_on_off
+    style:
+      top: 74%
+      left: 71%
+    tap_action:
+      action: toggle
+  - type: state-icon
+    entity: switch.studiorack_switch
+    style:
+      top: 69%
+      left: 84%
+    tap_action:
+      action: toggle
+  - type: state-icon
+    entity: switch.tz3000_kdi2o9m6_ts011f_d8fd58fe_on_off
+    style:
+      top: 74%
+      left: 77%
+  - type: state-label
+    entity: sensor.computers_en_nas_electricalmeasurement
+    style:
+      top: 68%
+      left: 76%
+  - type: state-icon
+    entity: binary_sensor.aqara_contact_kantoor_frank_balkondeur
+    style:
+      top: 58%
+      left: 95%
+      filter: invert(100%)
+  - type: state-label
+    entity: sensor.aqara_temperatuur_kantoor_frank
+    style:
+      top: 64%
+      left: 70%
+      filter: invert(100%)
+  - type: state-label
+    entity: sensor.aqara_temperatuur_kantoor_frank_humidity_sensor
+    style:
+      top: 66%
+      left: 70%
+      filter: invert(100%)
+  - type: state-label
+    entity: sensor.lumi_lumi_sensor_motion_aq2_illuminance
+    style:
+      top: 64%
+      left: 74%
+      filter: invert(100%)
+  - type: state-label
+    entity: sensor.badkamer_temperature
+    style:
+      top: 63%
+      left: 46%
+      filter: invert(100%)
+  - type: state-label
+    entity: sensor.badkamer_humidity
+    style:
+      top: 65%
+      left: 46%
+      filter: invert(100%)
+  - type: state-icon
+    entity: binary_sensor.pir_badkamer_bezetting
+    style:
+      top: 53%
+      left: 56%
