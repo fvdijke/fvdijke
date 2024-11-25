@@ -1,0 +1,174 @@
+blueprint:
+  name: Wekkerradio met langzaam licht en volume
+  description: >
+    Alarm met radiostream en langzaam toenemend volume, gevolgd door een
+    dimmend licht.
+  domain: automation
+  input:
+    alarm_days:
+      name: Dagen van de wekker
+      description: Kies op welke dagen de wekker actief is
+      selector:
+        select:
+          options:
+            - label: Maandag
+              value: mon
+            - label: Dinsdag
+              value: tue
+            - label: Woensdag
+              value: wed
+            - label: Donderdag
+              value: thu
+            - label: Vrijdag
+              value: fri
+            - label: Zaterdag
+              value: sat
+            - label: Zondag
+              value: sun
+          multiple: true
+          mode: list
+    alarm_time:
+      name: Tijd van de wekker
+      description: Stel de tijd in waarop de wekker moet afgaan
+      selector:
+        time:
+    radio_stream:
+      name: Radiostream
+      description: Selecteer het radiostation dat je wilt afspelen
+      selector:
+        select:
+          options:
+            - label: NPO Radio 1
+              value: https://www.mp3streams.nl/zender/npo-radio-1/stream/1-aac-64
+            - label: NPO Radio 2
+              value: https://www.mp3streams.nl/zender/npo-radio-2/stream/3-aac-64
+            - label: NPO Radio 3
+              value: https://www.mp3streams.nl/zender/npo-radio-3/stream/3-aac-64
+            - label: NPO Radio 4
+              value: https://www.mp3streams.nl/zender/npo-radio-4/stream/3-aac-64
+            - label: NPO Radio 5
+              value: https://www.mp3streams.nl/zender/npo-radio-5/stream/3-aac-64
+            - label: Radio 10
+              value: https://www.mp3streams.nl/zender/radio-10/stream/9-mp3-128
+            - label: Radio Veronica
+              value: https://www.mp3streams.nl/zender/veronica/stream/11-mp3-128  
+            - label: Radio 538
+              value: https://www.mp3streams.nl/zender/radio-538/stream/4-mp3-128
+            - label: Q Music
+              value: https://www.mp3streams.nl/zender/qmusic/stream/20-aac-64
+            - label: Sky Radio
+              value: https://www.mp3streams.nl/zender/skyradio/stream/8-mp3-128
+            - label: Sublime 
+              value: https://www.mp3streams.nl/zender/sublime/stream/17-aac-96
+              
+    speaker_target:
+      name: Speaker
+      description: Selecteer de speaker waarop de radio moet worden afgespeeld
+      selector:
+        target:
+          entity:
+            domain: media_player
+    max_volume:
+      name: Maximale volume
+      description: Het hoogste volume waartoe de radio moet oplopen
+      selector:
+        number:
+          min: 0
+          max: 1
+          step: 0.01
+    volume_ramp_duration:
+      name: Duur van volumeverhoging (seconden)
+      description: Hoe lang het duurt om het volume van 0 naar de ingestelde waarde te verhogen
+      selector:
+        number:
+          min: 1
+          max: 600
+          step: 1
+    light_target:
+      name: Licht
+      description: Selecteer welk licht langzaam moet aangaan
+      selector:
+        target:
+          entity:
+            domain: light
+    light_start_brightness:
+      name: Starthelderheid licht (%)
+      description: Beginwaarde van de helderheid
+      selector:
+        number:
+          min: 1
+          max: 100
+          step: 1
+    light_end_brightness:
+      name: Eindhelderheid licht (%)
+      description: Eindwaarde van de helderheid
+      selector:
+        number:
+          min: 1
+          max: 100
+          step: 1
+    light_ramp_duration:
+      name: Duur van lichtverhoging (seconden)
+      description: Hoe lang het duurt om de helderheid van de beginwaarde naar de eindwaarde te verhogen
+      selector:
+        number:
+          min: 1
+          max: 600
+          step: 1
+
+variables:
+  alarm_days: !input alarm_days
+  alarm_time: !input alarm_time
+  radio_stream: !input radio_stream
+  speaker_target: !input speaker_target
+  max_volume: !input max_volume
+  volume_ramp_duration: !input volume_ramp_duration
+  light_target: !input light_target
+  light_start_brightness: !input light_start_brightness
+  light_end_brightness: !input light_end_brightness
+  light_ramp_duration: !input light_ramp_duration
+
+trigger:
+  - platform: time
+    at: !input alarm_time
+
+condition:
+  - condition: time
+    weekday: !input alarm_days
+
+action:
+  - service: media_player.volume_set
+    target: !input speaker_target
+    data:
+      volume_level: 0
+  - service: media_player.play_media
+    target: !input speaker_target
+    data:
+      media_content_id: "{{ radio_stream }}"
+      media_content_type: "music"
+  - repeat:
+      count: "{{ volume_ramp_duration | int }}"
+      sequence:
+        - delay: "00:00:01"
+        - service: media_player.volume_set
+          target: !input speaker_target
+          data:
+            volume_level: >
+              {{ (repeat.index / volume_ramp_duration) * max_volume }}
+  - service: light.turn_on
+    target: !input light_target
+    data:
+      brightness_pct: "{{ light_start_brightness }}"
+  - repeat:
+      count: "{{ light_ramp_duration | int }}"
+      sequence:
+        - delay: "00:00:01"
+        - service: light.turn_on
+          target: !input light_target
+          data:
+            brightness_pct: >
+              {{
+                light_start_brightness +
+                ((repeat.index / light_ramp_duration) *
+                (light_end_brightness - light_start_brightness))
+              }}
