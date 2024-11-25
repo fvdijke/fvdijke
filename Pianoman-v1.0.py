@@ -134,7 +134,7 @@ class PianoApp:
         # Translation dictionary
         self.translations = {
             'en': {
-                'title': "Pianoman v1.0 by Frank van Dijke",
+                'title': "Pianoman v1.0 by FvD",
                 'song_name': "Song Name",
                 'number_of_octaves': "Number of Octaves",
                 'next_chord': "Next Chord",
@@ -177,7 +177,7 @@ class PianoApp:
                 # Add other translations as needed
             },
             'nl': {
-                'title': "Pianoman v1.0 door Frank van Dijke",
+                'title': "Pianoman v1.0 door FvD",
                 'song_name': "Liednaam",
                 'number_of_octaves': "Aantal Octaven",
                 'next_chord': "Volgend Akkoord",
