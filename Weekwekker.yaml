@@ -1,0 +1,245 @@
+blueprint:
+  name: Wekkerradio met per-dag wektijd en langzaam licht en volume
+  description: >
+    Alarm met radiostream en langzaam toenemend volume, gevolgd door een
+    dimmend licht, met per-dag instelbare wektijd.
+  domain: automation
+  input:
+    monday_enable:
+      name: Maandag Alarm Inschakelen
+      description: Schakel het alarm in op maandag
+      default: false
+      selector:
+        boolean: {}
+    monday_time:
+      name: Maandag Wektijd
+      description: Stel de wektijd in voor maandag
+      default: "06:25:00"
+      selector:
+        time: {}
+    tuesday_enable:
+      name: Dinsdag Alarm Inschakelen
+      description: Schakel het alarm in op dinsdag
+      default: false
+      selector:
+        boolean: {}
+    tuesday_time:
+      name: Dinsdag Wektijd
+      description: Stel de wektijd in voor dinsdag
+      default: "06:25:00"
+      selector:
+        time: {}
+    wednesday_enable:
+      name: Woensdag Alarm Inschakelen
+      description: Schakel het alarm in op woensdag
+      default: false
+      selector:
+        boolean: {}
+    wednesday_time:
+      name: Woensdag Wektijd
+      description: Stel de wektijd in voor woensdag
+      default: "06:25:00"
+      selector:
+        time: {}
+    thursday_enable:
+      name: Donderdag Alarm Inschakelen
+      description: Schakel het alarm in op donderdag
+      default: false
+      selector:
+        boolean: {}
+    thursday_time:
+      name: Donderdag Wektijd
+      description: Stel de wektijd in voor donderdag
+      default: "06:25:00"
+      selector:
+        time: {}
+    friday_enable:
+      name: Vrijdag Alarm Inschakelen
+      description: Schakel het alarm in op vrijdag
+      default: false
+      selector:
+        boolean: {}
+    friday_time:
+      name: Vrijdag Wektijd
+      description: Stel de wektijd in voor vrijdag
+      default: "06:25:00"
+      selector:
+        time: {}
+    saturday_enable:
+      name: Zaterdag Alarm Inschakelen
+      description: Schakel het alarm in op zaterdag
+      default: false
+      selector:
+        boolean: {}
+    saturday_time:
+      name: Zaterdag Wektijd
+      description: Stel de wektijd in voor zaterdag
+      default: "09:00:00"
+      selector:
+        time: {}
+    sunday_enable:
+      name: Zondag Alarm Inschakelen
+      description: Schakel het alarm in op zondag
+      default: false
+      selector:
+        boolean: {}
+    sunday_time:
+      name: Zondag Wektijd
+      description: Stel de wektijd in voor zondag
+      default: "09:00:00"
+      selector:
+        time: {}
+    radio_stream:
+      name: Radiostream
+      description: Selecteer het radiostation dat je wilt afspelen
+      selector:
+        select:
+          options:
+            - label: NPO Radio 1
+              value: https://www.mp3streams.nl/zender/npo-radio-1/stream/1-aac-64
+            - label: NPO Radio 2
+              value: https://www.mp3streams.nl/zender/npo-radio-2/stream/3-aac-64
+            - label: NPO Radio 3
+              value: https://www.mp3streams.nl/zender/npo-radio-3/stream/3-aac-64
+            - label: NPO Radio 4
+              value: https://www.mp3streams.nl/zender/npo-radio-4/stream/3-aac-64
+            - label: NPO Radio 5
+              value: https://www.mp3streams.nl/zender/npo-radio-5/stream/3-aac-64
+            - label: Radio 10
+              value: https://www.mp3streams.nl/zender/radio-10/stream/9-mp3-128
+            - label: Radio Veronica
+              value: https://www.mp3streams.nl/zender/veronica/stream/11-mp3-128
+    speaker_target:
+      name: Speaker
+      description: Selecteer de speaker waarop de radio moet worden afgespeeld
+      selector:
+        target:
+          entity:
+            domain: media_player
+    max_volume:
+      name: Maximale volume
+      description: Het hoogste volume waartoe de radio moet oplopen
+      selector:
+        number:
+          min: 0
+          max: 1
+          step: 0.01
+    volume_ramp_duration:
+      name: Duur van volumeverhoging (seconden)
+      description: Hoe lang het duurt om het volume van 0 naar de ingestelde waarde te verhogen
+      selector:
+        number:
+          min: 1
+          max: 600
+          step: 1
+    light_target:
+      name: Licht
+      description: Selecteer welk licht langzaam moet aangaan
+      selector:
+        target:
+          entity:
+            domain: light
+    light_start_brightness:
+      name: Starthelderheid licht (%)
+      description: Beginwaarde van de helderheid
+      selector:
+        number:
+          min: 1
+          max: 100
+          step: 1
+    light_end_brightness:
+      name: Eindhelderheid licht (%)
+      description: Eindwaarde van de helderheid
+      selector:
+        number:
+          min: 1
+          max: 100
+          step: 1
+    light_ramp_duration:
+      name: Duur van lichtverhoging (seconden)
+      description: Hoe lang het duurt om de helderheid van de beginwaarde naar de eindwaarde te verhogen
+      selector:
+        number:
+          min: 1
+          max: 600
+          step: 1
+
+variables:
+  alarm_times:
+    mon:
+      enable: !input monday_enable
+      time: !input monday_time
+    tue:
+      enable: !input tuesday_enable
+      time: !input tuesday_time
+    wed:
+      enable: !input wednesday_enable
+      time: !input wednesday_time
+    thu:
+      enable: !input thursday_enable
+      time: !input thursday_time
+    fri:
+      enable: !input friday_enable
+      time: !input friday_time
+    sat:
+      enable: !input saturday_enable
+      time: !input saturday_time
+    sun:
+      enable: !input sunday_enable
+      time: !input sunday_time
+  radio_stream: !input radio_stream
+  speaker_target: !input speaker_target
+  max_volume: !input max_volume
+  volume_ramp_duration: !input volume_ramp_duration
+  light_target: !input light_target
+  light_start_brightness: !input light_start_brightness
+  light_end_brightness: !input light_end_brightness
+  light_ramp_duration: !input light_ramp_duration
+
+trigger:
+  - platform: time_pattern
+    minutes: "/1"  # Elke minuut
+
+condition:
+  - condition: template
+    value_template: >
+      {% set day = now().strftime('%a').lower() %}
+      {% set day_alarm = alarm_times[day] %}
+      {{ day_alarm.enable and now().strftime('%H:%M:%S') == day_alarm.time }}
+
+action:
+  - service: media_player.volume_set
+    target: !input speaker_target
+    data:
+      volume_level: 0
+  - service: media_player.play_media
+    target: !input speaker_target
+    data:
+      media_content_id: "{{ radio_stream }}"
+      media_content_type: "music"
+  - repeat:
+      count: "{{ volume_ramp_duration | int }}"
+      sequence:
+        - delay: "00:00:01"
+        - service: media_player.volume_set
+          target: !input speaker_target
+          data:
+            volume_level: >
+              {{ (repeat.index / volume_ramp_duration) * max_volume }}
+  - service: light.turn_on
+    target: !input light_target
+    data:
+      brightness_pct: "{{ light_start_brightness }}"
+  - repeat:
+      count: "{{ light_ramp_duration | int }}"
+      sequence:
+        - delay: "00:00:01"
+        - service: light.turn_on
+          target: !input light_target
+          data:
+            brightness_pct: >
+              {{
+                light_start_brightness +
+                ((repeat.index / light_ramp_duration) *
+                (light_end_brightness - light_start_brightness))
+              }}
